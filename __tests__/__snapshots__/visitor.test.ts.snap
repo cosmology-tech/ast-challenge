@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`works 1`] = `
+"export interface MyOtherInterface {
+  a: string;
+  b: number;
+}"
+`;
