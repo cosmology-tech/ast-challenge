@@ -1,0 +1,42 @@
+{
+    "Pools": {
+        "requestType": "QueryPoolsRequest",
+        "responseType": "QueryPoolsResponse"
+    },
+    "NumPools": {
+        "requestType": "QueryNumPoolsRequest",
+        "responseType": "QueryNumPoolsResponse"
+    },
+    "TotalLiquidity": {
+        "requestType": "QueryTotalLiquidityRequest",
+        "responseType": "QueryTotalLiquidityResponse"
+    },
+    "Pool": {
+        "requestType": "QueryPoolRequest",
+        "responseType": "QueryPoolResponse"
+    },
+    "PoolParams": {
+        "requestType": "QueryPoolParamsRequest",
+        "responseType": "QueryPoolParamsResponse"
+    },
+    "TotalPoolLiquidity": {
+        "requestType": "QueryTotalPoolLiquidityRequest",
+        "responseType": "QueryTotalPoolLiquidityResponse"
+    },
+    "TotalShares": {
+        "requestType": "QueryTotalSharesRequest",
+        "responseType": "QueryTotalSharesResponse"
+    },
+    "SpotPrice": {
+        "requestType": "QuerySpotPriceRequest",
+        "responseType": "QuerySpotPriceResponse"
+    },
+    "EstimateSwapExactAmountIn": {
+        "requestType": "QuerySwapExactAmountInRequest",
+        "responseType": "QuerySwapExactAmountInResponse"
+    },
+    "EstimateSwapExactAmountOut": {
+        "requestType": "QuerySwapExactAmountOutRequest",
+        "responseType": "QuerySwapExactAmountOutResponse"
+    }
+}

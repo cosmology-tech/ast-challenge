@@ -1,5 +1,12 @@
 # ast-challenge
 
+Welcome! We're excited that you're interested in working with us, we hope you enjoy this challenge :)
+## Instructions
+
+1. create a cloned version of this repo (don't fork it publicly)
+2. keep the original git history and only add new commits to your clone
+3. make sure to include all of the deliverables mentioned in challenge
+
 ## setup
 
 ```
@@ -28,28 +35,56 @@ then, look at the `./scripts/test-output.json` for the result
 
 # challenge
 
-Convert the snippet below into a function:
+Take the input and output below, and make a function that can generate this code using babel ASTs:
 
-```ts
-export function useSg721AllTokensQuery<TData = AllTokensResponse>({
-  client,
-  args,
-  options
-}: Sg721AllTokensQuery<TData>) {
-  return useQuery<AllTokensResponse, Error, TData>(["sg721AllTokens", client.contractAddress, JSON.stringify(args)], () => client.allTokens({
-    limit: args.limit,
-    startAfter: args.startAfter
-  }), options);
-}
+### function input
+
+```json
+  {
+    "Pools": {
+        "requestType": "QueryPoolsRequest",
+        "responseType": "QueryPoolsResponse"
+    }
+  }
 ```
 
-after completing, parameterize (meaning make function arguments to make dynamic) the following properties
+### function output
 
-- [ ] function name (`useSg721AllTokensQuery`)
-- [ ] return type (`Sg721AllTokensQuery`)
-- [ ] response type (`AllTokensResponse`)
+```ts
+export interface UsePoolsQuery<TData> extends ReactQueryParams<QueryPoolsResponse, TData> {
+    request?: QueryPoolsRequest;
+}
+const usePools = <TData = QueryPoolsResponse,>({
+    request,
+    options
+}: UsePoolsQuery<TData>) => {
+    return useQuery<QueryPoolsResponse, Error, TData>(["poolsQuery", request], () => {
+        if (!queryService) throw new Error("Query Service not initialized");
+        return queryService.pools(request);
+    }, options);
+};
+```
+
+### HINTS
+
+1. [example for converting AST to Typescript](#ast---ts-example)
+2. [example for converting Typescript to AST](#ts---ast-example)
+
+#### deliverables
+
+- [ ] create a new test, call it `ast-challenge.test.ts` inside of `__tests__` folder
+- [ ] write code for the creation of the AST using babel types, inside of `src/index.ts`
+
+After completing the function, parameterize (meaning make function arguments to make dynamic) the following properties, so that a developer can use this method to generate many of these hooks. Be sure to include parameterization of these fields:
+
+- [ ] Query interface (`UsePoolsQuery`)
+- [ ] hook name (`usePools`)
+- [ ] request type (`QueryPoolsRequest`)
+- [ ] response type (`QueryPoolsResponse`)
+- [ ] queryService method name (`queryService.pools()`)
+- [ ] key name  (`poolsQuery`)
 
 #### bonus
 
-- [ ] function name (`allTokens`)
-- [ ] arguments (`limit`, `startAfter`)
+- [ ] add a test case in a new test that uses all methods from ['./example-methods.json`](./example-methods.json)
+- [ ] in the test case, use `expect(coderesult).toMatchSnapshot()` and save the snapshot for all the code
