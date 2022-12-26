@@ -5,7 +5,7 @@ Welcome! We're excited that you're interested in working with us, we hope you en
 
 1. create a cloned version of this repo (don't fork it publicly)
 2. keep the original git history and only add new commits to your clone
-3. make sure to include all of the deliverables mentioned in challenge
+3. make sure to include all of the [deliverables](#deliverables) mentioned in [challenge](#challenge)
 
 ## setup
 
